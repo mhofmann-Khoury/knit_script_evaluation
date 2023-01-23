@@ -66,7 +66,7 @@ $ knit_script.bat -k <knitout output>.k <knit script input>.ks
 At anytime during the study you can reference a description of the Knit Script language in this [readme](https://github.com/mhofmann-Khoury/knit_script#readme). You are also welcome to ask the researcher questions however they may not be able to provide answers. You can quit a task at anytime. 
 
 ## Review Example Stockinette Swatch Code
-The following code [snippet](https://github.com/mhofmann-Khoury/knit_script_evaluation/blob/master/stst_20x20.ks) generates the knitout instructions for a stockinette square of 20 stitches by 20 rows. Stockinette is a knitted text with all knit-stitches (front-bed stitches).
+The following code snippet generates the knitout instructions for a stockinette square of 20 stitches by 20 rows. Stockinette is a knitted text with all knit-stitches (front-bed stitches).
 
 ```knit_script
 // Build a standard Stockinette Swatch with an alternating tuck cast on
@@ -103,6 +103,7 @@ def alt_tuck_cast_on(w, is_front=True):{
 ```
 
 ## Action 1a: Generate a stockinette square
+Convert this snippet of code into knitout instruction using the following console commands. 
 
 On Linux and Mac machines:
 ```
