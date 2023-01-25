@@ -66,23 +66,7 @@ $ knit_script.bat -k <knitout output>.k <knit script input>.ks
 At anytime during the study you can reference a description of the Knit Script language in this [readme](https://github.com/mhofmann-Khoury/knit_script#readme). You are also welcome to ask the researcher questions however they may not be able to provide answers. You can quit a task at anytime. 
 
 ## Review Example Stockinette Swatch Code
-The following code snippet generates the knitout instructions for a stockinette square of 20 stitches by 20 rows. Stockinette is a knitted text with all knit-stitches (front-bed stitches).
-
-```knit_script
-// Build a standard Stockinette Swatch with an alternating tuck cast on
-import cast_ons;
-width = 20;
-height = 20;
-
-with Carrier as 1:{
-	cast_ons.alt_tuck_cast_on(width);
-	for r in range(0, height):{
-		in reverse direction:{
-			knit Loops;
-		}
-	}
-}
-```
+The following code in 'stst_20x20.ks' which  generates the knitout instructions for a stockinette square of 20 stitches by 20 rows. Stockinette is a knitted text with all knit-stitches (front-bed stitches).
 
 The imported function `cast_ons.alt_tuck_cast_on` is imported from the Knit Script standard library. It performs an alternating-tuck cast on to the width specified. By default, the cast on is on the front bed. The code reads:
 
@@ -103,39 +87,17 @@ def alt_tuck_cast_on(w, is_front=True):{
 ```
 
 ## Action 1a: Generate a stockinette square
-Convert this snippet of code into knitout instruction using the following console commands. 
-
-On Linux and Mac machines:
-```
-$ knit-script -k stst_20x20.k stst_20x20.ks
-```
-
-On Windows machines:
-```
-$ knit_script.bat -k stst_20x20.k stst_20x20.ks
-```
+1. Convert this snippet of code into knitout instructions by running main.py with the program set to `Task.Stst` (line 18)
 
 ## Action 1b: Resize the Stockinette Swatch
-
-Copy the stockinette code into a file named `modified_stst.ks` and change the code to make a swatch of stockinette that is 40 stitches wide and 10 courses tall. 
-
-From command line, run the knit script interpreter to generate the Knitout instructions for your modified code:
-
-On Linux and Mac machines:
-```
-$ knit-script -k modified_stst.k modified_stst.ks
-```
-
-On Windows machines:
-```
-$ knit_script.bat -k modified_stst.k modified_stst.ks
-```
+1. Modify the file named `modified_stst.ks` to make a swatch of stockinette that is 40 stitches wide and 10 courses tall. 
+2. Convert `modified_stst.ks` knitout instructions by running main.py with the program set to `Task.Modified_Stst` (line 19)
 
 ## Action 1c: Create a Resizable Swatch of Knit-Purl Rib
+1. Modify the  `rib.ks` file to create the ribbed swatch. Use a half-gauge knit-purl rib pattern. For example, if you had a width of 4 stitches you would be knitting on needles f0, b1, f2, b3. 
+2. Convert `rib.ks` knitout instructions by running main.py with the program set to `Task.Rib` (line 20)
 
-Write your own Knit Script file to create a swatch of variable width (i.e, stitches) and height (i.e., courses) in a knit-purl rib pattern. 
-
-Hints:
+### Hints:
 1. Knit stitches are made on the front bed (e.g., `Front_Needles`, `Front_Loops`) while purl stitches are made on the back bed (e.g., `Back_Needles`, `Back_Loops`).
 2. You can transfer loops held on needles to the opposite bed using a statement like `xfer <needle list> across`.
 3. Knit Script includes common list of needles such as:
@@ -145,124 +107,34 @@ Hints:
 4. You can take slices of a list of needles similar to a Python syntax:
    1. e.g., `Front_Needles[0:width:2]` will give every second front bed needle from 0 to width-1.
 
-Create a file called `rib.ks` for your ribbed swatch and generate knit script instructions as follows:
-On Linux and Mac machines:
-```
-$ knit-script -k rib.k rib.ks
-```
 
-On Windows machines:
-```
-$ knit_script.bat -k rib.k rib.ks
-```
 
 # Task 2: Making Tubes with alternating Sheets
 
-Knit Script allows you to think about your knitting as sheets of knitted structures. For example, a tube knit in-the-round is two sheets with the front sheet knitting the front of the tube and the back sheet knitting the back of the tube. Review the following [code]() that use two sheets (`Gauge as 2`) to knit a stockinette tube.
+Knit Script allows you to think about your knitting as sheets of knitted structures. For example, a tube knit in-the-round is two sheets with the front sheet knitting the front of the tube and the back sheet knitting the back of the tube. Review the code in `stst_tube.ks` that use two sheets (`Gauge as 2`) to knit a stockinette tube.
 
-```knit_script
-// Build a standard Stockinette Tube with an alternating tuck cast on
-import cast_ons;
-width = 20;
-height = 20;
 
-front_tube = 0;
-back_tube = 1;
-
-with Gauge as 2, Carrier as 1:{ // set Gauge to 2 for 2 sheets
-    with Sheet as front_tube:{ // Front of tube cast on on front <width> needles
-        cast_ons.alt_tuck_cast_on(width, is_front=True);
-    }
-    with Sheet as back_tube:{ // Back of tube cast on on back <width> needles
-        cast_ons.alt_tuck_cast_on(width, is_front=False);
-    }
-    for r in range(0, height):{
-        with Sheet as front_tube:{
-            in reverse direction:{
-                knit Loops; // only knits loops in front_tube sheet
-            }
-        }
-        with Sheet as back_tube:{
-            in reverse direction:{
-                knit Loops; // only knits loops in back_tube sheet
-            }
-        }
-    }
-}
-```
-
-## Action 2: Knit-Purl Ribbed Tube
 Working with sheets in knit script will automatically adjust your code to a gauging technique so that each sheet can make use of the front and back bed without conflicting with other sheets. Setting the gauge to 2 causes you to work in a half-gauging schema.
 
-Referencing your `rib.ks` file, modify the stockinette tube code to create a tube of knit-purl ribbing in a new file called `rib_tube.ks`. Note that you do not need to worry about conflicts between the two sheets, just write them separately as we have done in the example stockinette tube code. 
+## Action 2: Knit-Purl Ribbed Tube
+1. Modify the code in `rib_tube.ks` to create a tube of half-gauge knit purl ribbing.
+2. Convert `rib_tube.ks` knitout instructions by running main.py with the program set to `Task.Rib_Tube` (line 21)
 
-Verify your `rib_tube.ks` file by generating knitout instructions. 
+### Hints:
+1. You do not need to worry about conflicts between the two sheets, just write them separately as we have done in the example stockinette tube code. 
+2. Reference your `rib.ks` code to create a half gauged ribbing pattern on each sheet
 
 # Task 3: Layers of Colored Sheets
-Sheets can also be used to create layers of different colored yarns and colored patterns. The layer of sheets does not have to remain the same and changing the layer ordering at specific needles will trade out between different colors of fabric creating images. 
+Sheets can also be used to create layers of different colored yarns and colored patterns. The layering of sheets does not have to remain the same across all stitches. Changing the layer ordering at specific needles will trade out between different colors of fabric creating images. 
 
-Consider the following code in `2_stripes.ks` that creates 2 sheets of with 2 yarn colors. Sheet 0 is knitted in stockinette (all front bed knits) on carrier 1. Sheet 1 is knitted in reverse stockinette (all back bed knits) on carrier 2. The push statement `push first_stripe to back;` changes the layering of these two sheet for the first half of the working needles. In this stripe, Sheet 0 will appear behind Sheet 1. In the second stipe, Sheet 0 will, by default, appear in front of Sheet 1. This will creat two colored vertical stripes.
+Consider the code in `stripes.ks` that creates 2 sheets of with 2 yarn colors. Sheet `s0` is knitted in stockinette (all front bed knits) with carrier `c1`. Sheet `s1` is knitted in reverse stockinette (all back bed knits) with carrier `c2`. By default, all stitches made on `s0` will be in front of `s1` because 0 < 1. 
 
-```knit_script
-// Build a reversible stockinette swatch with 2 equal vertical stripes of different colors
-import cast_ons;
+The push statement `push first_stripe to back;` changes the layering of these two sheet for the needles in `first_stripe`. In this stripe, `s0` will now appear behind `s1`. The remaining working needles will still have `s0` stitches in front of `s1` stitches. This will create two vertical stripes with different colored yarns.
 
-width = 20;
-stripe_width = int(width / 2);
-height = 20;
-cast_on_height = 4;
 
-front_sheet = 0;
-front_carrier = 1;
-back_sheet = 1;
-back_carrier = 2;
-
-cast_on_carrier = 3; // carrier to knit cast on boundary
-
-with Gauge as 2:{
-    first_stripe = Front_Needles[0:stripe_width];
-    with Carrier as cast_on_carrier:{
-        with Sheet as front_sheet:{ // Cast On the front sheet
-            cast_ons.alt_tuck_cast_on(width, is_front=True);
-        }
-        with Sheet as back_sheet:{ // Back of tube cast on on back <width> needles
-            cast_ons.alt_tuck_cast_on(width, is_front=False);
-        }
-        // knit some stockinette on each sheet in the cast on yarn to stabilize the swatch
-        for r in range(0, cast_on_height):{
-            with Sheet as front_sheet:{
-                in reverse direction:{
-                    knit Loops;
-                }
-            }
-            with Sheet as back_sheet:{
-                in reverse direction:{
-                    knit Loops;
-                }
-            }
-        }
-    }
-    push first_stripe to back; // sets the layer of the first strip of needles to be the back layer. The other layer will be moved to the front as a result
-    for r in range(0, height):{
-        with Carrier as front_carrier, Sheet as front_sheet:{
-            in reverse direction:{
-                knit Loops;
-            }
-        }
-        with Carrier as back_carrier, Sheet as back_sheet:{
-            in reverse direction:{
-                knit Loops;
-            }
-        }
-    }
-}
-```
-
-## Action 3: 4-Colored Squares with Layered Sheets
-
-By modifying the code in `2_stripes.ks`, create a new file `4_squares.ks` that has 4 checkered squares of the two different yarn colors. Note that you can set needles in a layer to be at the front layer using `push <needles> to front.`
-
-Verify the `4_squares.ks` code by generating knitout instructions.
+## Action 3: 4 Checkered Squares with Layered Sheets
+1. Modify the code in `squares.ks` to create 4 checkered squares by alternating the layering of the two sheets.
+2. Convert `squares.ks` knitout instructions by running main.py with the program set to `Task.Squares` (line 22)
 
 # Wrapping Up:
-Thank you so much for participating in this study. Please send the research a copy of working directory as a zip folder.  We may email you with optional follow-up questions. 
+Thank you so much for participating in this study. We may email you with optional follow-up questions. 

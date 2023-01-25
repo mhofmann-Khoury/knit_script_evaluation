@@ -1,12 +1,13 @@
-// Build a standard Stockinette Tube with an alternating tuck cast on
+// Build a standard Stockinette Tube using two sheets
+// The front sheet (i.e., s0) will be knit on the front bed and always be in front of the other sheet
+// The back sheet (i.e., s1) will be knit on the back bed and always be behind the other sheet
 import cast_ons;
 width = 20;
 height = 20;
 
-front_tube = 0;
-back_tube = 1;
-
-with Gauge as 2, Carrier as 1:{ // set Gauge to 2 for 2 sheets
+with Gauge as 2, Carrier as c1:{ // set Gauge to 2 for 2 sheets
+    front_tube = s0; // Sheets are denoted by s and a positive integer. The lower the integer the further forward the sheet will be by default
+    back_tube = s1;
     with Sheet as front_tube:{ // Front of tube cast on on front <width> needles
         cast_ons.alt_tuck_cast_on(width, is_front=True);
     }
