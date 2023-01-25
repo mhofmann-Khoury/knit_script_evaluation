@@ -4,66 +4,18 @@ Thank you for participating in our evaluation of the Knit Script programming lan
 
 In this study, we will ask you to perform a variety of tasks in the Knit Script programming language. Our goal is to see how well this language supports common machine knitting practices. All feedback, negative and positive, is important to us and welcomed
 
-# Task 0: Set up
+# Task 0: Set  in Replit
+1. Join the Web IDE set up with this evaluation at [Replit](https://replit.com/join/dsyvmrrjgm-mhofmann)
+2. Sign in using Username: `KnitScript`
+3. Use the password: `knitscript`
 
-## Prerequisites
+Note: When working with Replit we have set all `*.ks` files to end with the `*.js` extension so that there is syntax highlighting on the knit script language. These are not java script files, however there are some similarities in the syntax.
 
-### Python 3
-If you have not already please ensure that you have a version of [Python 3](https://www.python.org/downloads/) installed on your computer. Knit Script is built on Python 3. In this study you will not be writing any Python code, however it will need to be installed for the interpreter to work. We recommend Python 3.11.
-
-### Pip 3
-You will also need Pip 3 to install the Knit Script library. This should be available with your Python installation. If you have trouble accessing pip on windows try adding it to your [PATH](https://www.geeksforgeeks.org/how-to-install-pip-on-windows/)
-
-## Clone Knit Script Samples to Your Machine
- You will need access to sample code in this repository for the remaining tasks. You can download all of these files by cloning this repository
-```
-$ git clone https://github.com/mhofmann-Khoury/knit_script_evaluation.git
-```
-
-## Option 1: Install Knit Script from PyPI
-
-The easiest way to install knit_script is to install from PyPI. In your console write:
-
-```
-$ pip install knit_script
-```
-
-This will install the latest version to your Python Scripts and will install Knit Script's required packages. 
-
-## Option 2: Install Knit Script from GitHub
-
-If you prefer to install modifiable version of Knit Script you can install if from the public GitHub [repository](https://github.com/mhofmann-Khoury/knit_script). 
-
-First navigate to the directory you want to store the code in locally on your machine and clone the repository:
-
-```
-$ git clone https://github.com/mhofmann-Khoury/knit_script.git
-```
-
-With the repository cloned to your machine install the library with:
-
-```
-$ pip install -e .   
-```
-
-## Convert Knit Script into Knitout
-
-For the remainder of this study we recommend working in the knit_script_evaluation directory on your computer and from the console. You can convert knit script files into knitout using the following commands:
-
-On Linux and Mac machines:
-```
-$ knit-script -k <knitout output>.k <knit script input>.ks
-```
-
-On Windows machines:
-```
-$ knit_script.bat -k <knitout output>.k <knit script input>.ks
-```
 
 
 # Task 1: Knit Script Basics
 
-At anytime during the study you can reference a description of the Knit Script language in this [readme](https://github.com/mhofmann-Khoury/knit_script#readme). You are also welcome to ask the researcher questions however they may not be able to provide answers. You can quit a task at anytime. 
+At anytime during the study you can reference a description of the Knit Script language in this [readme](https://github.com/mhofmann-Khoury/knit_script#readme). You are also welcome to ask the researcher questions however they may not be able to provide answers. You can quit a task or the study at anytime. 
 
 ## Review Example Stockinette Swatch Code
 The following code in 'stst_20x20.ks' which  generates the knitout instructions for a stockinette square of 20 stitches by 20 rows. Stockinette is a knitted text with all knit-stitches (front-bed stitches).
