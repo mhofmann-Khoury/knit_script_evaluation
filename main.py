@@ -1,7 +1,7 @@
 """Run file for Knit Script User evaluation tasks"""
 from enum import Enum
 
-from knit_script.interpret import knitscript_to_knitout_to_dat
+from knit_script.interpret import knitscript_to_knitout_to_dat, knit_script_to_knitout
 
 
 class Task(Enum):
@@ -20,4 +20,4 @@ program = Task.Stst  # todo: Use this line for Action 1a
 # program = Task.Rib  # todo: Use this line for Action 1c
 # program = Task.Rib_Tube  # todo: Use this line for Action 2
 # program = Task.Squares  # todo: Use this line for Action 3
-knitscript_to_knitout_to_dat(f"{program.value}.ks", f"{program.value}.k", pattern_is_filename=True)
+knit_script_to_knitout(f"{program.value}.ks", f"{program.value}.k", pattern_is_filename=True)
