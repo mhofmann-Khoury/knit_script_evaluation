@@ -12,7 +12,7 @@ class Task(Enum):
     Stst_Tube = "stst_tube"
     Rib_Tube = "rib_tube"
     Stripes = "stripes"
-    Squares = "_squares"
+    Squares = "squares"
 
 
 # program = Task.Stst  # todo: Use this line for Action 1a
