@@ -1,5 +1,4 @@
 // Modify Stockinette code to create a swatch of half-gauge knit purl rib.
-// Notes:
 // Knit Stitches are made on front bed
 // Purl Stitches are made on back bed
 // half gauge knit purl patterns will be knit like: f0 b1 f2 b3 ...

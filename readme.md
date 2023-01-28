@@ -1,4 +1,4 @@
-# Knit Scrip User Evaluation Instructions
+# Knit Script User Evaluation Instructions
 
 Thank you for participating in our evaluation of the Knit Script programming language. Your feedback will help us to improve this language and build new systems to support automatic machine knitting.
 
@@ -39,7 +39,7 @@ def alt_tuck_cast_on(w, is_front=True):{
 ```
 
 ## Action 1a: Generate a stockinette square
-1. Convert this snippet of code into knitout instructions by running main.py with the program set to `Task.Stst` (line 18)
+1. Convert `stst_20x20.ks` into knitout instructions by running main.py with the program set to `Task.Stst` (line 18)
 
 ## Action 1b: Resize the Stockinette Swatch
 1. Modify the file named `modified_stst.ks` to make a swatch of stockinette that is 40 stitches wide and 10 courses tall. 
